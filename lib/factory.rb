@@ -10,7 +10,11 @@ end
 
 class PartyFactory < Party 
 	def create(occupation)
-		self.class.const_get(occupation.to_s.capitalize).new
+		if [:warrior, :mage].include?(occupation)
+			self.class.const_get(occupation.to_s.capitalize).new
+		else 
+			raise 'error'
+		end
 	end
 end
 
